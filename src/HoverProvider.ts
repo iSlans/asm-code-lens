@@ -7,22 +7,6 @@ import {Config} from './config';
 import {readCommentsForLine} from './comments';
 
 
-
-// ---------------Custom Code -------------------
-let docs = {}
-try {
-    const data = fs.readFileSync(__dirname + '/doc.s').toString();
-    // hoverTexts.push(new vscode.MarkdownString(data))
-    const docsArray = data.split('\n\n\n').map((el: string) => el.split('\n'))
-    docsArray.forEach((docArr : string[]) => {
-        // let flags = docArr.pop();
-        let [name, command, ...info] = docArr;
-        name = name.replace(' ', '');
-        docs[name] = { command, info }
-    })
-} catch { (e: any) => console.log(e); }
-// ----------------------------------------------
-
 /**
  * HoverProvider for assembly language.
  */
