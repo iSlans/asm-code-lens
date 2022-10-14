@@ -1,0 +1,498 @@
+{
+  "hex": {
+    "prefix": ["$0x0"],
+    "body": ["\\$0x${TM_CURRENT_WORD/(0x)//}"]
+  },
+  "_main": {
+    "prefix": "_main",
+    "body": ["_main"]
+  },
+  ".FILL": {
+    "prefix": ".FILL",
+    "body": [".FILL"]
+  },
+  ".SET": {
+    "prefix": ".SET",
+    "body": [".SET"]
+  },
+  ".ASCII": {
+    "prefix": ".ASCII",
+    "body": [".ASCII"]
+  },
+  ".ASCIZ": {
+    "prefix": ".ASCIZ",
+    "body": [".ASCIZ"]
+  },
+  ".BYTE": {
+    "prefix": ".BYTE",
+    "body": [".BYTE"]
+  },
+  ".WORD": {
+    "prefix": ".WORD",
+    "body": [".WORD"]
+  },
+  ".LONG": {
+    "prefix": ".LONG",
+    "body": [".LONG"]
+  },
+  ".GLOBAL": {
+    "prefix": ".GLOBAL",
+    "body": [".GLOBAL"]
+  },
+  ".INCLUDE": {
+    "prefix": ".INCLUDE",
+    "body": [".INCLUDE"]
+  },
+  ".DATA": {
+    "prefix": ".DATA",
+    "body": [".DATA"]
+  },
+  ".TEXT": {
+    "prefix": ".TEXT",
+    "body": [".TEXT"]
+  },
+  "%EAX": {
+    "prefix": "%EAX",
+    "body": ["%EAX"]
+  },
+  "%EBX": {
+    "prefix": "%EBX",
+    "body": ["%EBX"]
+  },
+  "%ECX": {
+    "prefix": "%ECX",
+    "body": ["%ECX"]
+  },
+  "%EDX": {
+    "prefix": "%EDX",
+    "body": ["%EDX"]
+  },
+  "%EBP": {
+    "prefix": "%EBP",
+    "body": ["%EBP"]
+  },
+  "%ESI": {
+    "prefix": "%ESI",
+    "body": ["%ESI"]
+  },
+  "%EDI": {
+    "prefix": "%EDI",
+    "body": ["%EDI"]
+  },
+  "%ESP": {
+    "prefix": "%ESP",
+    "body": ["%ESP"]
+  },
+  "%EIP": {
+    "prefix": "%EIP",
+    "body": ["%EIP"]
+  },
+  "%AX": {
+    "prefix": "%AX",
+    "body": ["%AX"]
+  },
+  "%BX": {
+    "prefix": "%BX",
+    "body": ["%BX"]
+  },
+  "%CX": {
+    "prefix": "%CX",
+    "body": ["%CX"]
+  },
+  "%DX": {
+    "prefix": "%DX",
+    "body": ["%DX"]
+  },
+  "%BP": {
+    "prefix": "%BP",
+    "body": ["%BP"]
+  },
+  "%SI": {
+    "prefix": "%SI",
+    "body": ["%SI"]
+  },
+  "%DI": {
+    "prefix": "%DI",
+    "body": ["%DI"]
+  },
+  "%SP": {
+    "prefix": "%SP",
+    "body": ["%SP"]
+  },
+  "%AH": {
+    "prefix": "%AH",
+    "body": ["%AH"]
+  },
+  "%AL": {
+    "prefix": "%AL",
+    "body": ["%AL"]
+  },
+  "%BH": {
+    "prefix": "%BH",
+    "body": ["%BH"]
+  },
+  "%BL": {
+    "prefix": "%BL",
+    "body": ["%BL"]
+  },
+  "%CH": {
+    "prefix": "%CH",
+    "body": ["%CH"]
+  },
+  "%CL": {
+    "prefix": "%CL",
+    "body": ["%CL"]
+  },
+  "%DH": {
+    "prefix": "%DH",
+    "body": ["%DH"]
+  },
+  "%DL": {
+    "prefix": "%DL",
+    "body": ["%DL"]
+  },
+  "MOV": {
+    "prefix": "MOV",
+    "body": ["MOV"]
+  },
+  "LEA": {
+    "prefix": "LEA",
+    "body": ["LEA"]
+  },
+  "XCHG": {
+    "prefix": "XCHG",
+    "body": ["XCHG"]
+  },
+  "IN": {
+    "prefix": "IN",
+    "body": ["IN"]
+  },
+  "OUT": {
+    "prefix": "OUT",
+    "body": ["OUT"]
+  },
+  "PUSH": {
+    "prefix": "PUSH",
+    "body": ["PUSH"]
+  },
+  "POP": {
+    "prefix": "POP",
+    "body": ["POP"]
+  },
+  "PUSHAD": {
+    "prefix": "PUSHAD",
+    "body": ["PUSHAD"]
+  },
+  "POPAD": {
+    "prefix": "POPAD",
+    "body": ["POPAD"]
+  },
+  "ADD": {
+    "prefix": "ADD",
+    "body": ["ADD"]
+  },
+  "SUB": {
+    "prefix": "SUB",
+    "body": ["SUB"]
+  },
+  "INC": {
+    "prefix": "INC",
+    "body": ["INC"]
+  },
+  "DEC": {
+    "prefix": "DEC",
+    "body": ["DEC"]
+  },
+  "ADC": {
+    "prefix": "ADC",
+    "body": ["ADC"]
+  },
+  "SBB": {
+    "prefix": "SBB",
+    "body": ["SBB"]
+  },
+  "NEG": {
+    "prefix": "NEG",
+    "body": ["NEG"]
+  },
+  "CMP": {
+    "prefix": "CMP",
+    "body": ["CMP"]
+  },
+  "MUL": {
+    "prefix": "MUL",
+    "body": ["MUL"]
+  },
+  "IMUL": {
+    "prefix": "IMUL",
+    "body": ["IMUL"]
+  },
+  "DIV": {
+    "prefix": "DIV",
+    "body": ["DIV"]
+  },
+  "IDIV": {
+    "prefix": "IDIV",
+    "body": ["IDIV"]
+  },
+  "CWDE": {
+    "prefix": "CWDE",
+    "body": ["CWDE"]
+  },
+  "SHL": {
+    "prefix": "SHL",
+    "body": ["SHL"]
+  },
+  "SAL": {
+    "prefix": "SAL",
+    "body": ["SAL"]
+  },
+  "SHR": {
+    "prefix": "SHR",
+    "body": ["SHR"]
+  },
+  "SAR": {
+    "prefix": "SAR",
+    "body": ["SAR"]
+  },
+  "ROL": {
+    "prefix": "ROL",
+    "body": ["ROL"]
+  },
+  "RCL": {
+    "prefix": "RCL",
+    "body": ["RCL"]
+  },
+  "ROR": {
+    "prefix": "ROR",
+    "body": ["ROR"]
+  },
+  "RCR": {
+    "prefix": "RCR",
+    "body": ["RCR"]
+  },
+  "NOT": {
+    "prefix": "NOT",
+    "body": ["NOT"]
+  },
+  "AND": {
+    "prefix": "AND",
+    "body": ["AND"]
+  },
+  "OR": {
+    "prefix": "OR",
+    "body": ["OR"]
+  },
+  "XOR": {
+    "prefix": "XOR",
+    "body": ["XOR"]
+  },
+  "JMP": {
+    "prefix": "JMP",
+    "body": ["JMP"]
+  },
+  "JZ": {
+    "prefix": "JZ",
+    "body": ["JZ"]
+  },
+  "JNZ": {
+    "prefix": "JNZ",
+    "body": ["JNZ"]
+  },
+  "JC": {
+    "prefix": "JC",
+    "body": ["JC"]
+  },
+  "JNC": {
+    "prefix": "JNC",
+    "body": ["JNC"]
+  },
+  "JO": {
+    "prefix": "JO",
+    "body": ["JO"]
+  },
+  "JNO": {
+    "prefix": "JNO",
+    "body": ["JNO"]
+  },
+  "JS": {
+    "prefix": "JS",
+    "body": ["JS"]
+  },
+  "JNS": {
+    "prefix": "JNS",
+    "body": ["JNS"]
+  },
+  "JE": {
+    "prefix": "JE",
+    "body": ["JE"]
+  },
+  "JNE": {
+    "prefix": "JNE",
+    "body": ["JNE"]
+  },
+  "JA": {
+    "prefix": "JA",
+    "body": ["JA"]
+  },
+  "JAE": {
+    "prefix": "JAE",
+    "body": ["JAE"]
+  },
+  "JB": {
+    "prefix": "JB",
+    "body": ["JB"]
+  },
+  "JBE": {
+    "prefix": "JBE",
+    "body": ["JBE"]
+  },
+  "JG": {
+    "prefix": "JG",
+    "body": ["JG"]
+  },
+  "JGE": {
+    "prefix": "JGE",
+    "body": ["JGE"]
+  },
+  "JL": {
+    "prefix": "JL",
+    "body": ["JL"]
+  },
+  "JLE": {
+    "prefix": "JLE",
+    "body": ["JLE"]
+  },
+  "CALL": {
+    "prefix": "CALL",
+    "body": ["CALL"]
+  },
+  "RET": {
+    "prefix": "RET",
+    "body": ["RET"]
+  },
+  "NOP": {
+    "prefix": "NOP",
+    "body": ["NOP"]
+  },
+  "HLT": {
+    "prefix": "HLT",
+    "body": ["HLT"]
+  },
+  "LOOP": {
+    "prefix": "LOOP",
+    "body": ["LOOP"]
+  },
+  "LOOPE": {
+    "prefix": "LOOPE",
+    "body": ["LOOPE"]
+  },
+  "LOOPNE": {
+    "prefix": "LOOPNE",
+    "body": ["LOOPNE"]
+  },
+  "inchar": {
+    "prefix": "inchar",
+    "body": ["inchar"]
+  },
+  "outchar": {
+    "prefix": "outchar",
+    "body": ["outchar"]
+  },
+  "newline": {
+    "prefix": "newline",
+    "body": ["newline"]
+  },
+  "pause": {
+    "prefix": "pause",
+    "body": ["pause"]
+  },
+  "inline": {
+    "prefix": "inline",
+    "body": ["inline"]
+  },
+  "outline": {
+    "prefix": "outline",
+    "body": ["outline"]
+  },
+  "outmess": {
+    "prefix": "outmess",
+    "body": ["outmess"]
+  },
+  "inbyte": {
+    "prefix": "inbyte",
+    "body": ["inbyte"]
+  },
+  "inword": {
+    "prefix": "inword",
+    "body": ["inword"]
+  },
+  "inlong": {
+    "prefix": "inlong",
+    "body": ["inlong"]
+  },
+  "outbyte": {
+    "prefix": "outbyte",
+    "body": ["outbyte"]
+  },
+  "outword": {
+    "prefix": "outword",
+    "body": ["outword"]
+  },
+  "outlong": {
+    "prefix": "outlong",
+    "body": ["outlong"]
+  },
+  "indecimal_byte": {
+    "prefix": "indecimal_byte",
+    "body": ["indecimal_byte"]
+  },
+  "indecimal_word": {
+    "prefix": "indecimal_word",
+    "body": ["indecimal_word"]
+  },
+  "indecimal_long": {
+    "prefix": "indecimal_long",
+    "body": ["indecimal_long"]
+  },
+  "outdecimal_byte": {
+    "prefix": "outdecimal_byte",
+    "body": ["outdecimal_byte"]
+  },
+  "outdecimal_word": {
+    "prefix": "outdecimal_word",
+    "body": ["outdecimal_word"]
+  },
+  "outdecimal_long": {
+    "prefix": "outdecimal_long",
+    "body": ["outdecimal_long"]
+  },
+  "MOVS": {
+    "prefix": "MOVS",
+    "body": ["MOVS"]
+  },
+  "STD": {
+    "prefix": "STD",
+    "body": ["STD"]
+  },
+  "CLD": {
+    "prefix": "CLD",
+    "body": ["CLD"]
+  },
+  "LODS": {
+    "prefix": "LODS",
+    "body": ["LODS"]
+  },
+  "STOS": {
+    "prefix": "STOS",
+    "body": ["STOS"]
+  },
+  "CMPS": {
+    "prefix": "CMPS",
+    "body": ["CMPS"]
+  },
+  "SCAS": {
+    "prefix": "SCAS",
+    "body": ["SCAS"]
+  }
+}

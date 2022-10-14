@@ -38,6 +38,12 @@
 	],
 	"main": "./out/src/extension",
 	"contributes": {
+		"snippets": [
+			{
+				"language": "asm-collection",
+				"path": "./snippets.json"
+			}
+		],
 		"views": {
 			"explorer": [
 				{
