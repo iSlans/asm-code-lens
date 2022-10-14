@@ -55,7 +55,7 @@
 				},
 				{
 					"name": "comment.line_hashtag.asm",
-					"begin": "#+\\s",
+					"begin": "#\\s",
 					"end": "\\n"
 				}
 			]
@@ -267,7 +267,15 @@
 		"labels": {
 			"patterns": [
 				{
-					"match": "(\\@?(\\.?[a-zA-Z_]\\w*)+)",
+					"match": "^\\@?((\\$\\$(?!\\.))?[\\w\\.]+)[:\\s]",
+					"captures": {
+						"1": {
+							"name": "entity.name.function.asm"
+						}
+					}
+				},
+				{
+					"match": "\\b([a-zA-Z][\\w\\.]+)\\b",
 					"name": "variable.parameter.label.asm"
 				}
 			]

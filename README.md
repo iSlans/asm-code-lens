@@ -3,17 +3,17 @@
 If you like ASM-Code-Lens please consider supporting it.
 
 <a href="https://github.com/sponsors/maziac" title="Github sponsor">
-	<img src="assets/button_donate_sp.png" />
+	<img src="https://github.com/maziac/asm-code-lens/raw/HEAD/assets/button_donate_sp.png" />
 </a>
 &nbsp;&nbsp;
 <a href="https://www.paypal.com/donate/?hosted_button_id=K6NNLZCTN3UV4&locale.x=en_DE&Z3JncnB0=" title="PayPal">
-	<img src="assets/button_donate_pp.png" />
+	<img src="https://github.com/maziac/asm-code-lens/raw/HEAD/assets/button_donate_pp.png" />
 </a>
 
 
 # ASM Code Lens
 
-![](assets/codelens_usage.gif)
+![](https://github.com/maziac/asm-code-lens/raw/HEAD/assets/codelens_usage.gif)
 
 'ASM Code Lens' is a language server extension for Visual Studio Code for assembler files.
 It provides support for:
@@ -55,14 +55,14 @@ The calculator allows the basic integer calculations:
 - multiplication
 - division
 
-![](assets/hexcalculator.gif)
+![](https://github.com/maziac/asm-code-lens/raw/HEAD/assets/hexcalculator.gif)
 
 
 ## Outline View
 
 An outline view of the assembly can be shown like this:
 
-![](assets/outline_view.jpg)
+![](https://github.com/maziac/asm-code-lens/raw/HEAD/assets/outline_view.jpg)
 
 "ASM Code Lens" uses some heuristics to tell what labels are data, const or code.
 So be aware that it's decision might be wrong sometimes.
@@ -111,13 +111,13 @@ main_loop:
 ```
 
 Which results in the following highlighting:
-![](assets/md_code_blocks.jpg)
+![](https://github.com/maziac/asm-code-lens/raw/HEAD/assets/md_code_blocks.jpg)
 
 
 
 # Known Issues
 
-- [CodeLens lifetime #57227](https://github.com/Microsoft/vscode/issues/57227): Updates of the CodeLens is not working optimal. At the moment it is necessary to reload or save the file to update the CodeLens info.
+- [CodeLens lifetime [#57227](https://github.com/maziac/asm-code-lens/issues/57227)](https://github.com/Microsoft/vscode/issues/57227): Updates of the CodeLens is not working optimal. At the moment it is necessary to reload or save the file to update the CodeLens info.
 - This extension doesn't use a structured approach but just looks at all asm files without hierarchy. This means that sjasmplus MODULE definitions are only taken into account if they are used within the same file.
 
 

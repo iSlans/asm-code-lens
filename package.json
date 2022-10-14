@@ -1,308 +1,298 @@
 {
-    "name": "asm-code-lens",
-    "displayName": "ASM Code Lens",
-    "version": "2.0.0-rc1",
-    "publisher": "maziac",
-    "description": "A language server that enables code lens, references, hover information, symbol renaming and the outline view for assembler files.",
-    "author": {
-        "name": "Thomas Busse"
-    },
-    "license": "MIT",
-    "keywords": [
-        "asm-code-lens",
-        "assembler",
-        "references",
-        "code lens",
-        "z80",
-        "hex",
-        "calculator",
-        "hover",
-        "markdown"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/maziac/asm-code-lens"
-    },
-    "bugs": {
-        "url": "https://github.com/maziac/asm-code-lens/issues"
-    },
-    "engines": {
-        "vscode": "^1.65.0",
-        "node": "^14.15.4"
-    },
-    "icon": "assets/icon.png",
-    "categories": [
-        "Programming Languages"
-    ],
-    "activationEvents": [
-        "onStartupFinished"
-    ],
-    "main": "./out/src/extension",
-    "contributes": {
-        "views": {
-            "explorer": [
-                {
-                    "type": "webview",
-                    "id": "asm-code-lens.calcview-explorer",
-                    "name": "Hexadecimal Calculator",
-                    "icon": "assets/hexcalc_icon.svg",
-                    "contextualTitle": "Hex Calculator",
-                    "when": "config.asm-code-lens.hexCalculator.showInExplorer"
-                }
-            ],
-            "debug": [
-                {
-                    "type": "webview",
-                    "id": "asm-code-lens.calcview-debug",
-                    "name": "Hexadecimal Calculator",
-                    "icon": "assets/hexcalc_icon.svg",
-                    "contextualTitle": "Hex Calculator",
-                    "when": "config.asm-code-lens.hexCalculator.showInDebug"
-                }
-            ]
-        },
-        "configuration": {
-            "type": "object",
-            "title": "asm-code-lens configuration",
-            "properties": {
-                "asm-code-lens.enableOutlineView": {
-                    "scope": "window",
-                    "type": "boolean",
-                    "default": true,
-                    "markdownDescription": "Enable/disable outline view for the active document."
-                },
-                "asm-code-lens.enableCodeLenses": {
-                    "scope": "window",
-                    "type": "boolean",
-                    "default": true,
-                    "markdownDescription": "Enable/disable the display of code lenses (references) above labels."
-                },
-                "asm-code-lens.enableHovering": {
-                    "scope": "window",
-                    "type": "boolean",
-                    "default": true,
-                    "markdownDescription": "Enable/disable the of showing information while hovering labels etc."
-                },
-                "asm-code-lens.enableCompletions": {
-                    "scope": "window",
-                    "type": "boolean",
-                    "default": true,
-                    "markdownDescription": "Enable/disable symbol input completion."
-                },
-                "asm-code-lens.completionsRequiredLength": {
-                    "scope": "window",
-                    "type": "number",
-                    "default": 1,
-                    "markdownDescription": "The number of characters required before completion proposals will be presented."
-                },
-                "asm-code-lens.enableGotoDefinition": {
-                    "scope": "window",
-                    "type": "boolean",
-                    "default": true,
-                    "markdownDescription": "Enable/disable 'Go to Type Definition'. You need to reload the extension to take effect."
-                },
-                "asm-code-lens.enableFindAllReferences": {
-                    "scope": "window",
-                    "type": "boolean",
-                    "default": true,
-                    "markdownDescription": "Enable/disable 'Find All References'."
-                },
-                "asm-code-lens.enableRenaming": {
-                    "scope": "window",
-                    "type": "boolean",
-                    "default": true,
-                    "markdownDescription": "Enable/disable the possibility to rename labels. You need to reload the extension to take effect."
-                },
-                "asm-code-lens.excludeFiles": {
-                    "scope": "window",
-                    "type": "string",
-                    "default": "",
-                    "markdownDescription": "Choose what files or directories to exclude e.g `**/*.{inc,s}`."
-                },
-                "asm-code-lens.hexCalculator.showInExplorer": {
-                    "scope": "window",
-                    "markdownDescription": "Set to false to disable calculator in explorer view.",
-                    "type": "boolean",
-                    "default": true
-                },
-                "asm-code-lens.hexCalculator.showInDebug": {
-                    "scope": "window",
-                    "markdownDescription": "Set to false to disable calculator in debug view.",
-                    "type": "boolean",
-                    "default": true
-                },
-                "asm-code-lens.hexCalculator.hexPrefix": {
-                    "scope": "window",
-                    "markdownDescription": "The prefix to use for hex values, e.g. `0x` or `$`",
-                    "type": "string",
-                    "default": "0x"
-                },
-                "asm-code-lens.donated": {
-                    "scope": "window",
-                    "markdownDescription": "If you donated (press the `Donate...` button in hex calculator to do so) you can hide the button by setting this parameter.",
-                    "type": "boolean",
-                    "default": false
-                },
-                "asm-code-lens.comments.toggleLineCommentPrefix": {
-                    "scope": "window",
-                    "markdownDescription": "Configure the prefix used when toggling the line comment.",
-                    "type": "string",
-                    "default": ";"
-                },
-                "asm-code-lens.labels.colon": {
-                    "scope": "window",
-                    "markdownDescription": "Determines if labels with or without or both should be recognized.\nPlease note: labels without colons cannot be determined in list files.",
-                    "type": "string",
-                    "enum": [
-                        "Both",
-                        "With colon",
-                        "Without colon"
-                    ],
-                    "enumDescriptions": [
-                        "Labels with and without a trailing colon",
-                        "Only labels with a trailing colon",
-                        "Only labels without a trailing colon"
-                    ],
-                    "default": "Both"
-                },
-                "asm-code-lens.labels.excludes": {
-                    "scope": "window",
-                    "markdownDescription": "Configure here a comma separated list of words that should not be recognized as labels. E.g. if asm-code-lens wrongly interprets an assembler directive as label you can exclude it here. For example `if;then;else;elif;endif`. The exclude is case-insensitive.",
-                    "type": "string",
-                    "default": ""
-                }
-            }
-        },
-        "commands": [
-            {
-                "command": "asm-code-lens.whatsNew",
-                "title": "Show 'What's New' page of this ASM-Code-Lens release.",
-                "category": "asm-code-lens"
-            },
-            {
-                "command": "asm-code-lens.find-labels-with-no-reference",
-                "title": "Find Labels with no Reference",
-                "category": "asm-code-lens"
-            }
-        ],
-        "menus": {
-            "editor/context": [
-                {
-                    "when": "resourceLangId == asm-collection || resourceLangId == asm-list-file",
-                    "command": "asm-code-lens.find-labels-with-no-reference",
-                    "group": "0_navigation@10"
-                }
-            ],
-            "commandPalette": [
-                {
-                    "command": "asm-code-lens.find-labels-with-no-reference",
-                    "when": "false"
-                }
-            ]
-        },
-        "languages": [
-            {
-                "id": "asm-collection",
-                "extensions": [
-                    ".a80",
-                    ".z80",
-                    ".asm",
-                    ".inc",
-                    ".s"
-                ],
-                "aliases": [
-                    "Assembler file"
-                ],
-                "configuration": "./language-configuration.json"
-            },
-            {
-                "id": "asm-list-file",
-                "extensions": [
-                    ".list",
-                    ".lis"
-                ],
-                "aliases": [
-                    "Assembler list file"
-                ],
-                "configuration": "./language-configuration.json"
-            },
-            {
-                "id": "asm-markdown-codeblock"
-            },
-            {
-                "id": "asm-list-markdown-codeblock"
-            }
-        ],
-        "grammars": [
-            {
-                "language": "asm-collection",
-                "scopeName": "source.asm",
-                "path": "./grammar/asm.json"
-            },
-            {
-                "language": "asm-list-file",
-                "scopeName": "source.asm.list",
-                "path": "./grammar/asm_list.json"
-            },
-            {
-                "language": "asm-markdown-codeblock",
-                "scopeName": "markdown.asm.codeblock",
-                "path": "./grammar/asm_markdown_codeblock.json",
-                "injectTo": [
-                    "text.html.markdown"
-                ]
-            },
-            {
-                "language": "asm-list-markdown-codeblock",
-                "scopeName": "markdown.asm.list.codeblock",
-                "path": "./grammar/asm_list_markdown_codeblock.json",
-                "injectTo": [
-                    "text.html.markdown"
-                ]
-            }
-        ],
-        "problemMatchers": [
-            {
-                "name": "problem-matcher-sjasmplus",
-                "owner": "asm-code-lens",
-                "fileLocation": [
-                    "relative",
-                    "${workspaceFolder}"
-                ],
-                "pattern": [
-                    {
-                        "regexp": "^(.*)\\((\\d+)\\):\\s+(warning|error):\\s+(.*)$",
-                        "file": 1,
-                        "line": 2,
-                        "severity": 3,
-                        "message": 4
-                    }
-                ]
-            }
-        ]
-    },
-    "scripts": {
-        "compile": "tsc -p ./",
-        "tslint": "eslint ./**/*.ts",
-        "watch": "tsc -w -p ./",
-        "test": "mocha -u tdd 'out/**/*.tests.js'",
-        "package": "vsce package",
-        "publish": "vsce publish"
-    },
-    "dependencies": {
-        "assert": "^2.0.0",
-        "fast-glob": "^3.2.11",
-        "fs-extra": "^10.0.1",
-        "grepit": "^1.0.0",
-        "jsonc-parser": "^3.0.0",
-        "ts-node": "^10.7.0"
-    },
-    "devDependencies": {
-        "@types/mocha": "^9.1.0",
-        "@types/node": "^17.0.21",
-        "@types/vscode": "^1.65.0",
-        "mocha": "^9.2.2",
-        "source-map-support": "^0.5.21",
-        "typescript": "^4.6.2"
-    }
+	"name": "asm-code-lens",
+	"displayName": "ASM Code Lens - iSlans",
+	"version": "1.10.2",
+	"publisher": "maziac",
+	"description": "extension fork by iSlans",
+	"author": {
+		"name": "Thomas Busse"
+	},
+	"license": "MIT",
+	"keywords": [
+		"assembler",
+		"references",
+		"code lens",
+		"z80",
+		"hex",
+		"calculator",
+		"hover",
+		"markdown"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/maziac/asm-code-lens"
+	},
+	"bugs": {
+		"url": "https://github.com/maziac/asm-code-lens/issues"
+	},
+	"engines": {
+		"vscode": "^1.65.0",
+		"node": "^14.15.4"
+	},
+	"icon": "assets/icon.png",
+	"categories": [
+		"Programming Languages"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"views": {
+			"explorer": [
+				{
+					"type": "webview",
+					"id": "asm-code-lens.calcview-explorer",
+					"name": "Hexadecimal Calculator",
+					"icon": "assets/hexcalc_icon.svg",
+					"contextualTitle": "Hex Calculator",
+					"when": "config.asm-code-lens.hexCalculator.showInExplorer"
+				}
+			],
+			"debug": [
+				{
+					"type": "webview",
+					"id": "asm-code-lens.calcview-debug",
+					"name": "Hexadecimal Calculator",
+					"icon": "assets/hexcalc_icon.svg",
+					"contextualTitle": "Hex Calculator",
+					"when": "config.asm-code-lens.hexCalculator.showInDebug"
+				}
+			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "asm-code-lens configuration",
+			"properties": {
+				"asm-code-lens.enableOutlineView": {
+					"scope": "window",
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable/disable outline view for the active document."
+				},
+				"asm-code-lens.enableCodeLenses": {
+					"scope": "window",
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable/disable the display of code lenses (references) above labels."
+				},
+				"asm-code-lens.enableHovering": {
+					"scope": "window",
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable/disable the of showing information while hovering labels etc."
+				},
+				"asm-code-lens.enableCompletions": {
+					"scope": "window",
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable/disable symbol input completion."
+				},
+				"asm-code-lens.completionsRequiredLength": {
+					"scope": "window",
+					"type": "number",
+					"default": 1,
+					"markdownDescription": "The number of characters required before completion proposals will be presented."
+				},
+				"asm-code-lens.enableGotoDefinition": {
+					"scope": "window",
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable/disable 'Go to Type Definition'. You need to reload the extension to take effect."
+				},
+				"asm-code-lens.enableFindAllReferences": {
+					"scope": "window",
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable/disable 'Find All References'."
+				},
+				"asm-code-lens.enableRenaming": {
+					"scope": "window",
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable/disable the possibility to rename labels. You need to reload the extension to take effect."
+				},
+				"asm-code-lens.includeFiles": {
+					"scope": "window",
+					"type": "string",
+					"default": "**/*.{asm,inc,s,a80}",
+					"markdownDescription": "Choose what files to include e.g `**/*.{asm,inc,s,a80,z80}`. If your assembler sources suffix is different then you can change it here."
+				},
+				"asm-code-lens.excludeFiles": {
+					"scope": "window",
+					"type": "string",
+					"default": "",
+					"markdownDescription": "Choose what files or directories to exclude e.g `**/*.{inc,s}`."
+				},
+				"asm-code-lens.hexCalculator.showInExplorer": {
+					"scope": "window",
+					"markdownDescription": "Set to false to disable calculator in explorer view.",
+					"type": "boolean",
+					"default": true
+				},
+				"asm-code-lens.hexCalculator.showInDebug": {
+					"scope": "window",
+					"markdownDescription": "Set to false to disable calculator in debug view.",
+					"type": "boolean",
+					"default": true
+				},
+				"asm-code-lens.hexCalculator.hexPrefix": {
+					"scope": "window",
+					"markdownDescription": "The prefix to use for hex values, e.g. `0x` or `$`",
+					"type": "string",
+					"default": "0x"
+				},
+				"asm-code-lens.donated": {
+					"scope": "window",
+					"markdownDescription": "If you donated (press the `Donate...` button in hex calculator to do so) you can hide the button by setting this parameter.",
+					"type": "boolean",
+					"default": false
+				},
+				"asm-code-lens.comments.toggleLineCommentPrefix": {
+					"scope": "window",
+					"markdownDescription": "Configure the prefix used when toggling the line comment.",
+					"type": "string",
+					"default": ";"
+				},
+				"asm-code-lens.labels.colon": {
+					"scope": "window",
+					"markdownDescription": "Determines if labels with or without or both should be recognized.",
+					"type": "string",
+					"enum": [
+						"Both",
+						"With colon",
+						"Without colon"
+					],
+					"enumDescriptions": [
+						"Labels with and without a trailing colon",
+						"Only labels with a trailing colon",
+						"Only labels without a trailing colon"
+					],
+					"default": "Both"
+				},
+				"asm-code-lens.labels.excludes": {
+					"scope": "window",
+					"markdownDescription": "Configure here a comma separated list of words that should not be recognized as labels. E.g. if asm-code-lens wrongly interprets an assembler directive as label you can exclude it here. For example `if;then;else;elif;endif`. The exclude is case-insensitive.",
+					"type": "string",
+					"default": ""
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "asm-code-lens.whatsNew",
+				"title": "Show 'What's New' page of this ASM-Code-Lens release.",
+				"category": "asm-code-lens"
+			},
+			{
+				"command": "asm-code-lens.find-labels-with-no-reference",
+				"title": "Find Labels with no Reference",
+				"category": "asm-code-lens"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "resourceLangId == asm-collection",
+					"command": "asm-code-lens.find-labels-with-no-reference",
+					"group": "0_navigation@10"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "asm-code-lens.find-labels-with-no-reference",
+					"when": "false"
+				}
+			]
+		},
+		"languages": [
+			{
+				"id": "asm-collection",
+				"extensions": [
+					".list",
+					".lis",
+					".a80",
+					".z80",
+					".asm",
+					".inc",
+					".s"
+				],
+				"aliases": [
+					"Assembler file"
+				],
+				"configuration": "./language-configuration.json"
+			},
+			{
+				"id": "asm-markdown-codeblock"
+			}
+		],
+		"grammars": [
+			{
+				"language": "asm-collection",
+				"scopeName": "source.asm",
+				"path": "./grammar/asm.json"
+			},
+			{
+				"language": "asm-markdown-codeblock",
+				"scopeName": "markdown.asm.codeblock",
+				"path": "./grammar/asm_markdown_codeblock.json",
+				"injectTo": [
+					"text.html.markdown"
+				]
+			}
+		],
+		"problemMatchers": [
+			{
+				"name": "problem-matcher-sjasmplus",
+				"owner": "asm-code-lens",
+				"fileLocation": [
+					"relative",
+					"${workspaceFolder}"
+				],
+				"pattern": [
+					{
+						"regexp": "^(.*)\\((\\d+)\\):\\s+(warning|error):\\s+(.*)$",
+						"file": 1,
+						"line": 2,
+						"severity": 3,
+						"message": 4
+					}
+				]
+			}
+		]
+	},
+	"scripts": {
+		"compile": "tsc -p ./",
+		"tslint": "eslint ./**/*.ts",
+		"watch": "tsc -w -p ./",
+		"test": "mocha -u tdd 'out/**/*.tests.js'",
+		"package": "vsce package",
+		"publish": "vsce publish"
+	},
+	"dependencies": {
+		"assert": "^2.0.0",
+		"fast-glob": "^3.2.11",
+		"fs-extra": "^10.0.1",
+		"grepit": "^1.0.0",
+		"jsonc-parser": "^3.0.0",
+		"ts-node": "^10.7.0"
+	},
+	"devDependencies": {
+		"@types/mocha": "^9.1.0",
+		"@types/node": "^17.0.21",
+		"@types/vscode": "^1.65.0",
+		"mocha": "^9.2.2",
+		"source-map-support": "^0.5.21",
+		"typescript": "^4.6.2"
+	},
+	"__metadata": {
+		"id": "c7c7dabf-1f16-4ec3-8ec6-7862b0beca2a",
+		"publisherId": "8e0bd66d-43ba-49ba-be8e-1c11111f3e5b",
+		"publisherDisplayName": "maziac",
+		"targetPlatform": "undefined",
+		"updated": true,
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1649237548850
+	}
 }
