@@ -7,14 +7,16 @@ MOV src, dst
 
 @@@
 LEA
-LEA src, dst 
-copy the address 
-no Flag modified
+ LEA src, dst 
+ copy the address 
+ 
+ no Flag modified
 
 @@@
 XCHG
 XCHG src, dst 
  switch contents 
+ 
  no Flag modified
 
 @@@
@@ -36,9 +38,9 @@ OUT {%AL / %AX}, {dst / (%DX)}
 @@@
 PUSH
 PUSH src 
-src 16/32 bit 
-decrement ESP, copy src in (%ESP) 
-no Flag modified
+ src 16/32 bit 
+ decrement ESP, copy src in (%ESP) 
+ no Flag modified
 
 @@@
 POP
@@ -50,33 +52,33 @@ no Flag modified
 @@@
 PUSHAD
 PUSHAD 
-save on stack EAX, ECX, EDX, EBX, ESP, EBP, ESI, EDI 
-no Flag modified
+ push in stack EAX, ECX, EDX, EBX, ESP, EBP, ESI, EDI 
+ no Flag modified
 
 @@@
 POPAD
 POPAD   
-retrieve from stack EDI, ESI, EBP, ESP, EBX, EDX, ECX, EAX 
-ESP is not overwrited 
-no Flag modified
+ pop from stack EDI, ESI, EBP, ESP, EBX, EDX, ECX, EAX 
+ ESP is not overwrited 
+ no Flag modified
 
 @@@
 ADD
 ADD src, dst 
-dst += src 
-CF = 1 if got carry as naturals 
-OF = 1 if got overflow as integers (concordant operands or result discordant with operands) 
-ZF = 1 if result all bits are zeros 
-SF = MSB(result) 
-all Flags modified
+ dst += src 
+ CF = 1 if got carry as naturals 
+ OF = 1 if got overflow as integers (concordant operands or result discordant with operands) 
+ ZF = 1 if result all bits are zeros 
+ SF = MSB(result) 
+ all Flags modified
 
 @@@
 SUB
 SUB src, dst 
-dst -= src 
-CF = 1 if got borrow as naturals 
-OF = 1 if got overflow as integers
-all Flags modified
+ dst -= src 
+ CF = 1 if got borrow as naturals 
+ OF = 1 if got overflow as integers
+ all Flags modified
 
 @@@
 INC
@@ -163,7 +165,7 @@ src 32 bit:  EDX_EAX / src : Q --> EAX  R--> EDX
 @@@
 CWDE
 CWDE
- extend AX as integer to EAX
+ extend AX to EAX as integer
  no Flag modified
 
 @@@
@@ -278,7 +280,7 @@ XOR
 XOR src, dst
  bitwise xor
 
- $0x20, dst to invert bit n.5 of dst
+ XOR $0x20, dst to invert bit n.5 of dst
 
  CF = OF = 0
  all Flags modified
